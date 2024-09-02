@@ -49,5 +49,9 @@ def update(request,pk):
 
     return render(request, "update.html", {'form': form})
 
+def delete(request,pk):
+    tasks = task.objects.get(pk=pk)
+    tasks.delete()
 
+    return redirect("home")
 
