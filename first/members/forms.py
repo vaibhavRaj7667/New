@@ -7,6 +7,11 @@ class task_form(ModelForm):
         model = task
         fields = ['name','category','assigned_to','start_date','end_date','priority','description','location','organizer']
 
+        widgets = {
+            'start_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'end_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        }
+
 class category_form(ModelForm):
     class Meta:
         model = Category

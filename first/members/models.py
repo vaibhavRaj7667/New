@@ -17,3 +17,6 @@ class task(models.Model):
     description = models.TextField(default='')
     location = models.CharField(max_length=255, default='')
     organizer = models.CharField(max_length=100, default='')
+
+    def __str__(self):
+        return f"{self.name} - {self.category.name} - {self.assigned_to.username}"

@@ -7,5 +7,26 @@
   </head>
   <body>
     <h1>home</h1>
+    {% if tasks %}
+    <ul>
+      {% for task in tasks %}
+      <li>
+        <strong>{{ task.name }}</strong><br />
+        Category: {{ task.category }}<br />
+        Assigned To: {{ task.assigned_to }}<br />
+        Start Date: {{ task.start_date }}<br />
+        End Date: {{ task.end_date }}<br />
+        Priority: {{ task.priority }}<br />
+        Description: {{ task.description }}<br />
+        Location: {{ task.location }}<br />
+        Organizer: {{ task.organizer }}<br />
+      </li>
+
+      <a href="{% url 'update' task.pk %}">Update {{ task.name }}</a>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No tasks available.</p>
+    {% endif %}
   </body>
 </html>
